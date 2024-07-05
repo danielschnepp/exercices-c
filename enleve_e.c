@@ -8,17 +8,13 @@ char texte[MAX_CARACTERES + 1];
 int main(){
 	int j;
 	int i = 0;
-	
-	debut :
 
 	printf("Écrivez quelque chose (max : %d caractères) : ", MAX_CARACTERES);
 
 	do {
-		scanf("%c", texte[i]);
+		scanf("%c", &texte[i]);
 		i++;
-	} while (!((i < MAX_CARACTERES) && (texte[i] == '\n')));
-
-	goto debut;
+	} while (!((i < MAX_CARACTERES) && (texte[i] != '\n')));
 
 	for (j = 0;j < i;j++){
 		if (texte[j] == 'e'){
