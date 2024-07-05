@@ -13,7 +13,7 @@ int collision(struct unit a,struct unit b);
 void affichage(char tab[]);
 void new_unit(int player_id,char type,struct unit units[]);
 int demande_tour(char *type1,char *type2, struct unit units[]);
-void initialisation (struct unit tab[], char tabl[]);
+void initialisation (struct unit units[], char tab[]);
 void update(char tab[],struct unit units[]);
 int fin(struct unit units[]);
 int compte_unit(int player_id, struct unit units[]);
@@ -105,7 +105,7 @@ void new_unit(int player_id,char type,struct unit units[]){
 }
 
 int demande_tour(char *type1,char *type2, struct unit units[]){
-	printf("Que voulez-vous faire ??? (a, b, c ou 0) : ");
+	printf("Que voulez-vous faire ??? (a, b, c ou 0) :\n");
 	scanf("%c %c",type1,type2);
 	if (compte_unit(0,units) >= MAX_UNIT){
 		*type1 = '0';
@@ -113,19 +113,21 @@ int demande_tour(char *type1,char *type2, struct unit units[]){
 	if (compte_unit(1,units) >= MAX_UNIT){
 		*type2 = '0';
 	}
+
+	return 0;
 }
 
-void initialisation(struct unit tab[], char tabl[]){
+void initialisation(struct unit units[], char tab[]){
 	int i;
 
 	for (i = 0;i < MAX_UNIT * 2;i++){
-		tab[i].utile = 0;
-		tab[i].player_id = -1;
-		tab[i].x = -1;
-		tab[i].type = ' ';
+		units[i].utile = 0;
+		units[i].player_id = -1;
+		units[i].x = -1;
+		units[i].type = ' ';
 	}
 	for (i = 0;i < SURFACE;i++){
-		tabl[i] = '_';
+		tab[i] = '_';
 	}
 }
 
