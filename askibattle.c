@@ -20,7 +20,7 @@ int compte_unit(int player_id, struct unit units[]);
 void delete(int i,struct unit units[]);
 
 int main(){
-	char tab[SURFACE] = {'_'};
+	char tab[SURFACE];
 	struct unit units[MAX_UNIT * 2];
 	int tour = 0;
 	int i;
