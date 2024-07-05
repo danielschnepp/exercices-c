@@ -15,6 +15,7 @@ void new_unit(int player_id,char type,struct unit units[]);
 void demande_tour(char *type1,char *type2, struct unit units[]);
 void initialisation (struct unit units[], char tab[]);
 void update(char tab[],struct unit units[]);
+void update_tab(char tab[],struct unit units[]);
 int fin(struct unit units[]);
 int compte_unit(int player_id, struct unit units[]);
 void delete(int i,struct unit units[]);
@@ -57,6 +58,7 @@ int main(){
 		i = fin(units);
 		if (i == 0){
 			update(tab,units);
+			update_tab(tab,units);
 			affichage(tab);
 		} else if (i == 1){
 			printf("Victoire du joueur 1 !!!\n");
@@ -105,7 +107,7 @@ void new_unit(int player_id,char type,struct unit units[]){
 
 void demande_tour(char *type1,char *type2, struct unit units[]){
 	printf("Que voulez-vous faire ??? (a, b, c ou 0) :\n");
-	scanf("%c %c",type1,type2);
+	scanf("%c%c",type1,type2);
 	if (compte_unit(0,units) >= MAX_UNIT){
 		*type1 = '0';
 	}
@@ -179,6 +181,15 @@ void update (char tab[],struct unit units[]){
 		} else {
 			units[i].x -= 1;
 		}
+	}
+}
+
+void update_tab(char tab[], struct unit units[]){
+	int i;
+
+	for (i = 0;i < MAX_UNIT * 2;i++){
+		if (units[i].utile == 0) continue;
+			tab[units[i].x] = units[i].type;
 	}
 }
 
