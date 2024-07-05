@@ -12,7 +12,7 @@ struct unit {
 int collision(struct unit a,struct unit b);
 void affichage(char tab[]);
 void new_unit(int player_id,char type,struct unit units[]);
-int demande_tour(char *type1,char *type2, struct unit units[]);
+void demande_tour(char *type1,char *type2, struct unit units[]);
 void initialisation (struct unit units[], char tab[]);
 void update(char tab[],struct unit units[]);
 int fin(struct unit units[]);
@@ -104,7 +104,7 @@ void new_unit(int player_id,char type,struct unit units[]){
 	}
 }
 
-int demande_tour(char *type1,char *type2, struct unit units[]){
+void demande_tour(char *type1,char *type2, struct unit units[]){
 	printf("Que voulez-vous faire ??? (a, b, c ou 0) :\n");
 	scanf("%c %c",type1,type2);
 	if (compte_unit(0,units) >= MAX_UNIT){
@@ -114,7 +114,7 @@ int demande_tour(char *type1,char *type2, struct unit units[]){
 		*type2 = '0';
 	}
 
-	return 0;
+	return;
 }
 
 void initialisation(struct unit units[], char tab[]){
