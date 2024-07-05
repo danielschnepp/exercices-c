@@ -29,8 +29,8 @@ int main(){
 	initialisation(units,tab);
 
 	while (1){
-		char type1 = 'a';
-		char type2 = 'a';
+		char type1 = '0';
+		char type2 = '0';
 		tour++;
 		demande_tour(&type1,&type2,units);
 		if (type1 != '0'){
@@ -108,10 +108,10 @@ void new_unit(int player_id,char type,struct unit units[]){
 void demande_tour(char *type1,char *type2, struct unit units[]){
 	printf("Que voulez-vous faire ??? (a, b, c ou 0) :\n");
 	scanf("%c%c",type1,type2);
-	if ((compte_unit(0,units) >= MAX_UNIT) || (*type1 != 'a') || (*type1 != 'b') || (*type1 != 'c')){
+	if (/*(*/compte_unit(0,units) >= MAX_UNIT)/* || (*type1 != 'a') || (*type1 != 'b') || (*type1 != 'c'))*/{
 		*type1 = '0';
 	}
-	if ((compte_unit(1,units) >= MAX_UNIT) || (*type2 != 'a') || (*type2 != 'b') || (*type2 != 'c')){
+	if (/*(*/compte_unit(1,units) >= MAX_UNIT)/* || (*type2 != 'a') || (*type2 != 'b') || (*type2 != 'c'))*/{
 		*type2 = '0';
 	}
 
