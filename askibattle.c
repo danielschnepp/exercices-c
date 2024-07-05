@@ -87,11 +87,9 @@ void affichage(char tab[]){
 
 void new_unit(int player_id,char type,struct unit units[]){
 	int i;
-	int oui = 0;
 	
-	for (i = 0;(i < MAX_UNIT * 2) && (oui == 0);i++){
+	for (i = 0;i < MAX_UNIT * 2;i++){
 		if (units[i].utile == 0){
-			oui = 1;
 			units[i].utile = 1;
 			units[i].player_id = player_id;
 			units[i].type = type;
@@ -100,6 +98,7 @@ void new_unit(int player_id,char type,struct unit units[]){
 			} else {
 				units[i].x = SURFACE;
 			}
+			return;
 		}
 	}
 }
@@ -135,50 +134,49 @@ void update (char tab[],struct unit units[]){
 	int i;
 
 	for (i = 0;i < MAX_UNIT * 2;i++){
-		if (units[i].utile == 1){
-			int j;
-			int c = 0;
-			for (j = 0;j < MAX_UNIT * 2;j++){
-				if (j == i) continue;
-				if (collision(units[j],units[i])){
-					c++;
-					switch (units[j].type){
-						case 'a' : switch(units[i].type){
-									    case 'b' : delete(i,units);
-									    	       break;
-										case 'c' : delete(j,units);
-									   			   break;
-										case 'a' :
-										default : break;
-								   }
-								   break;
-						case 'b' : switch(units[i].type){
-									    case 'c' : delete(i,units);
-									    	       break;
-										case 'a' : delete(j,units);
-									   			   break;
-										case 'b' :
-										default : break;
-								   }
-								   break;
-						case 'c' : switch(units[i].type){
-									    case 'a' : delete(i,units);
-									    	       break;
-										case 'b' : delete(j,units);
-									   			   break;
-										case 'c' :
-										default : break;
-								   }
-								   break;
-					}
+		if (units[i].utile == 0) continue;
+		int j;
+		int c = 0;
+		for (j = 0;j < MAX_UNIT * 2;j++){
+			if (j == i) continue;
+			if (collision(units[j],units[i])){
+				c++;
+				switch (units[j].type){
+					case 'a' : switch(units[i].type){
+								    case 'b' : delete(i,units);
+								    	       break;
+									case 'c' : delete(j,units);
+								   			   break;
+									case 'a' :
+									default : break;
+							   }
+							   break;
+					case 'b' : switch(units[i].type){
+								    case 'c' : delete(i,units);
+								    	       break;
+									case 'a' : delete(j,units);
+								   			   break;
+									case 'b' :
+									default : break;
+							   }
+							   break;
+					case 'c' : switch(units[i].type){
+								    case 'a' : delete(i,units);
+								    	       break;
+									case 'b' : delete(j,units);
+								   			   break;
+									case 'c' :
+									default : break;
+							   }
+							   break;
 				}
 			}
-			if (c != 0) continue;
-			if (units[i].player_id == 0){
-				units[i].x += 1;
-			} else {
-				units[i].x -= 1;
-			}
+		}
+		if (c != 0) continue;
+		if (units[i].player_id == 0){
+			units[i].x += 1;
+		} else {
+			units[i].x -= 1;
 		}
 	}
 }
