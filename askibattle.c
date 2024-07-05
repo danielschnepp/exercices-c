@@ -147,7 +147,7 @@ void update (char tab[],struct unit units[]){
 								    	       break;
 									case 'c' : delete(j,units);
 								   			   break;
-									case 'a' :
+									case 'a' : break;
 									default : break;
 							   }
 							   break;
@@ -156,7 +156,7 @@ void update (char tab[],struct unit units[]){
 								    	       break;
 									case 'a' : delete(j,units);
 								   			   break;
-									case 'b' :
+									case 'b' : break;
 									default : break;
 							   }
 							   break;
@@ -165,10 +165,11 @@ void update (char tab[],struct unit units[]){
 								    	       break;
 									case 'b' : delete(j,units);
 								   			   break;
-									case 'c' :
+									case 'c' : break;
 									default : break;
 							   }
 							   break;
+					default : break;
 				}
 			}
 		}
