@@ -76,7 +76,7 @@ int collision(struct unit a,struct unit b){
 	return 0;
 }
 
-void affichage(char tab[SURFACE]){
+void affichage(char tab[]){
 	int i;
 
 	for (i = 0;i < SURFACE;i++){
@@ -85,7 +85,7 @@ void affichage(char tab[SURFACE]){
 	printf("\n");
 }
 
-void new_unit(int player_id,char type,struct unit units[MAX_UNIT * 2]){
+void new_unit(int player_id,char type,struct unit units[]){
 	int i;
 	int oui = 0;
 	
