@@ -189,7 +189,7 @@ void update_tab(char tab[], struct unit units[]){
 
 	for (i = 0;i < MAX_UNIT * 2;i++){
 		if (units[i].utile == 0) continue;
-			tab[units[i].x] = units[i].type;
+			tab[units[i].x - 1] = units[i].type;
 	}
 }
 
